@@ -327,6 +327,7 @@ $xaml = @"
                             Width="150"
                             Margin="380,70,0,0"
                             VerticalAlignment="Top"
+                            IsChecked="True"
                             ToolTip="If checked values that have a value of 0 or that show N/A in the grid will be ignored"
                         />
                             <CheckBox x:Name="Enable_Folders_For_Sessions_LogicalDisks"
@@ -336,6 +337,7 @@ $xaml = @"
                             Width="300"
                             Margin="380,100,0,0"
                             VerticalAlignment="Top"
+                            IsChecked="True"
                             ToolTip="If checked folders will be displayed for Sessions and Logical Disks (Slow, Requires Reload of data). "
                         />
                         <Image x:Name="Monitor_Image" Height="150" Canvas.Left="700" Canvas.Top="5" Width="112"/>
@@ -506,6 +508,7 @@ $xaml = @"
                             Width="150"
                             Margin="380,70,0,0"
                             VerticalAlignment="Top"
+                            IsChecked="True"
                             ToolTip="If checked values that have a value of 0 will be ignored"
                         />
                         <Image x:Name="Insights_Image" Height="150" Canvas.Left="700" Canvas.Top="5" Width="112"/>
@@ -900,6 +903,7 @@ function load-Monitor_data {
     $Monitor_Folder_Selector.items.clear()
     $Monitor_Available_Metrics.Text = "Disabled while loading data"
     $Monitor_Available_Metrics.items.clear()
+    $window.Dispatcher.Invoke([action] {}, "Render") 
     $sourcefolder = $Monitor_Folder_TextBox.Text
     $filetypetmp = $Monitor_SourceType.SelectedItem.Content
     write-verbose "Cleaning up unneeded memory"
